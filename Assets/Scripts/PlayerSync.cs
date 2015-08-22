@@ -43,7 +43,6 @@ public class PlayerSync : NetworkBehaviour {
 		//Debug.Log ("CmdRotateToSever OK  Y = " + i_vRot.z);
 
 		syncPlayerRotation.eulerAngles = i_vRot ;
-
 		syncPlayerPosition = i_vPos;
 	}
 	
@@ -56,7 +55,6 @@ public class PlayerSync : NetworkBehaviour {
 			MyAcceleration = Input.acceleration;
 
 			myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.x * _fRotRatio * (-1) ) ;
-
 			myPos = new Vector3( MyAcceleration.x * _fPosRatio, transform.position.y, transform.position.z ) ;
 
 			//debugText.text = "Rotate Y : " + MyAcceleration.y.ToString() ;
