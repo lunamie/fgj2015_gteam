@@ -174,8 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6ae7428367e4ce39fa65ae22e4787a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  _fRatio: 20
+  _fRotRatio: 40
+  _fPosRatio: 7
   MyAcceleration: {x: 0, y: 0, z: 0}
 --- !u!114 &11486220
 MonoBehaviour:
@@ -223,6 +223,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _fRatio
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _fRotRatio
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _fPosRatio
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
