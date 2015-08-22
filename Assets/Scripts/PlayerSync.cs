@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking ;
 using System.Collections;
 
 public class PlayerSync : NetworkBehaviour {
+
+	[SerializeField] private Text debugText ;
+	public float _fRatio ;
 
 	//	: PlayerRot.
 	[SyncVar] private Quaternion syncPlayerRotation ;
@@ -13,7 +17,11 @@ public class PlayerSync : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		GameObject go = GameObject.Find ("debugText") as GameObject;
+
+		if (go) {
+			debugText = go.GetComponent<Text> ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -25,7 +33,7 @@ public class PlayerSync : NetworkBehaviour {
 
 	[Command]
 	void CmdRotateToSever ( Vector3 i_vRot ) {
-		//Debug.Log ("OK  Y = " + i_vRot.y);
+		//Debug.Log ("CmdRotateToSever OK  Y = " + i_vRot.z);
 
 		syncPlayerRotation.eulerAngles = i_vRot ;
 	}
@@ -38,8 +46,9 @@ public class PlayerSync : NetworkBehaviour {
 			Quaternion gyroQt = Input.gyro.attitude;
 			MyAcceleration = Input.acceleration;
 
-			myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.y * 180.0f + 180.0f) ;
+			myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.y) ;
 
+			debugText.text = "Rotate Y : " + MyAcceleration.y.ToString() ;
 
 			CmdRotateToSever( myRot ) ;
 		}
