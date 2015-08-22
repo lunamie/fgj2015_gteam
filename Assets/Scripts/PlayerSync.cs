@@ -10,7 +10,8 @@ public class PlayerSync : NetworkBehaviour {
 	[SerializeField] private float _fPosRatio ;
 	[SerializeField] private float _fHeightRatio ;
 
-	public GameObject _goModel ;
+	[SerializeField] private GameObject _goModel ;
+	[SerializeField] private Animator _animModel ;
 
 	[SyncVar] private Quaternion syncPlayerRotation ;
 	[SyncVar] private Vector3 syncPlayerPosition ;
@@ -27,6 +28,8 @@ public class PlayerSync : NetworkBehaviour {
 		if (go) {
 			//debugText = go.GetComponent<Text> ();
 		}
+
+		_animModel = _goModel.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +45,11 @@ public class PlayerSync : NetworkBehaviour {
 	}
 
 	[Command]
+	void CmdJump ( bool isJumped ) {
+		_animModel.SetBool( "isJump", isJumped ) ;
+	}
+
+	[Command]
 	void CmdTransformToSever ( Vector3 i_vRot, Vector3 i_vPos, Vector3 i_vAcc ) {
 		//Debug.Log ("CmdRotateToSever OK  Y = " + i_vRot.z);
 
@@ -49,8 +57,9 @@ public class PlayerSync : NetworkBehaviour {
 		syncPlayerPosition = i_vPos;
 
 		Debug.Log ("X : " + i_vAcc.x + "  Y : " + i_vAcc.y + "  Z : " + i_vAcc.z);
-	}
 
+	}
+	
 	[Client]
 	void TransmitRotations ()
 	{
@@ -70,6 +79,14 @@ public class PlayerSync : NetworkBehaviour {
 			else {
 				vPos = new Vector3( MyAcceleration.x * _fPosRatio, 0.0f, _goModel.transform.localPosition.z ) ;
 			}
+
+			if( MyAcceleration.z <= -1.2f ) {
+				CmdJump ( true ) ;
+			}
+			else {
+				CmdJump ( false ) ;
+			}
+
 			//debugText.text = "Rotate Y : " + MyAcceleration.y.ToString() ;
 
 			DEBUG_OUTPUT() ;

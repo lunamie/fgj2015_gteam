@@ -10,6 +10,11 @@ public class Move : MonoBehaviour {
 	List<Transform> points = new List<Transform>();
 
 	/// <summary>
+	/// 
+	/// </summary>
+	[SerializeField] private float switchPointDistance ;
+
+	/// <summary>
 	/// 現在進行中の移動先
 	/// </summary>
 	int current;
@@ -24,7 +29,7 @@ public class Move : MonoBehaviour {
 		if ( points == null || points.Count == 0 ) return;
 		Vector3 pos = points[current].position;
 
-		if ( Vector3.Distance( transform.position, pos ) < 2.0f ) {
+		if ( Vector3.Distance( transform.position, pos ) < switchPointDistance ) {
 			current = ( current < points.Count - 1 ) ? current + 1 : 0;
 		}
 
