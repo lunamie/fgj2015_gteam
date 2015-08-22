@@ -34,4 +34,8 @@ public class Move : MonoBehaviour {
 	public void AddPoint(Transform point) {
 		this.points.Add( point );
 	}
+
+	public void OnDisable() {
+		navmeshAgent.Stop();
+	}
 }
