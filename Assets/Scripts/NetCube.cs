@@ -6,8 +6,15 @@ public class NetCube : MonoBehaviour {
 	//public Vector3 MyAcceleration ;
 
 	// Use this for initialization
+
+	[SerializeField]
+	Move move;
+
 	void Start () {
-	
+		var points = GameObject.Find( "MovePoints" );
+		for ( int i = 0; i < points.transform.childCount; i++ ) {
+			move.AddPoint( points.transform.GetChild( i ) );
+		}
 	}
 	
 	// Update is called once per frame

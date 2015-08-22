@@ -20,14 +20,14 @@ public class PlayerSync : NetworkBehaviour {
 	void FixedUpdate () {
 		TransmitRotations ();
 
-		transform.rotation = syncPlayerRotation ;
+		//transform.rotation = syncPlayerRotation ;
 	}
 
 	[Command]
 	void CmdRotateToSever ( Vector3 i_vRot ) {
 		//Debug.Log ("OK  Y = " + i_vRot.y);
 
-		syncPlayerRotation.eulerAngles = i_vRot ;
+		//syncPlayerRotation.eulerAngles = i_vRot ;
 	}
 	
 	[Client]
@@ -38,10 +38,10 @@ public class PlayerSync : NetworkBehaviour {
 			Quaternion gyroQt = Input.gyro.attitude;
 			MyAcceleration = Input.acceleration;
 
-			myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.y * 180.0f + 180.0f) ;
+			//myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.y * 180.0f + 180.0f) ;
 
 
-			CmdRotateToSever( myRot ) ;
+			//CmdRotateToSever( myRot ) ;
 		}
 	}
 }
