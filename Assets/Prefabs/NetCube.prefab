@@ -44,6 +44,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441604}
+  - 114: {fileID: 11406004}
+  - 114: {fileID: 11456254}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -308,6 +310,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 66
+    i1: 82
+    i2: 51
+    i3: 44
+    i4: 27
+    i5: 254
+    i6: 52
+    i7: 245
+    i8: 138
+    i9: 97
+    i10: 163
+    i11: 238
+    i12: 66
+    i13: 166
+    i14: 0
+    i15: 201
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11414348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,17 +354,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navmeshAgent: {fileID: 19590678}
+--- !u!114 &11456254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6ae7428367e4ce39fa65ae22e4787a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fRotRatio: 40
+  _fPosRatio: 20
+  MyAcceleration: {x: 0, y: 0, z: 0}
 --- !u!114 &11458638
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182900}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d6ae7428367e4ce39fa65ae22e4787a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fRotRatio: 0
+  _fPosRatio: 0
   MyAcceleration: {x: 0, y: 0, z: 0}
 --- !u!114 &11494602
 MonoBehaviour:
@@ -343,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621c30cddb61e481aa11273abfe70fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: 0}
+  move: {fileID: 11414348}
 --- !u!114 &11497850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,6 +464,18 @@ Prefab:
       propertyPath: move
       value: 
       objectReference: {fileID: 11414348}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _fRotRatio
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _fPosRatio
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182900}

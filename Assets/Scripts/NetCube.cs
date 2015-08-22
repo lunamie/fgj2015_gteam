@@ -15,6 +15,10 @@ public class NetCube : MonoBehaviour {
 		for ( int i = 0; i < points.transform.childCount; i++ ) {
 			move.AddPoint( points.transform.GetChild( i ) );
 		}
+
+		Vector3 vInitPos =  points.transform.GetChild (0).transform.position;
+
+		transform.position = new Vector3 (vInitPos.x, transform.position.y, vInitPos.z);
 	}
 	
 	// Update is called once per frame

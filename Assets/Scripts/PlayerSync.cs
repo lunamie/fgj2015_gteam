@@ -31,7 +31,7 @@ public class PlayerSync : NetworkBehaviour {
 		TransmitRotations ();
 
 		transform.rotation = syncPlayerRotation ;
-		transform.position = syncPlayerPosition ;
+		transform.localPosition = new Vector3( syncPlayerPosition.x, transform.localPosition.y, transform.localPosition.z ) ;
 	}
 
 	void DEBUG_OUTPUT () {
@@ -45,7 +45,7 @@ public class PlayerSync : NetworkBehaviour {
 		syncPlayerRotation.eulerAngles = i_vRot ;
 		syncPlayerPosition = i_vPos;
 	}
-	
+
 	[Client]
 	void TransmitRotations ()
 	{
@@ -55,7 +55,7 @@ public class PlayerSync : NetworkBehaviour {
 			MyAcceleration = Input.acceleration;
 
 			myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.x * _fRotRatio * (-1) ) ;
-			myPos = new Vector3( MyAcceleration.x * _fPosRatio, transform.position.y, transform.position.z ) ;
+			myPos = new Vector3( MyAcceleration.x * _fPosRatio, transform.localPosition.y, transform.localPosition.z ) ;
 
 			//debugText.text = "Rotate Y : " + MyAcceleration.y.ToString() ;
 
