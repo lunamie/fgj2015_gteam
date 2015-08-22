@@ -3,9 +3,9 @@ using System.Collections;
 
 public class ParticleEffect : MonoBehaviour {
 
-	ParticleSystem myParticleSystem;
+	ParticleSystem myParticleSystem = null;
 	
-	void Awake ()
+	void Start ()
 	{
 		myParticleSystem = this.GetComponent<ParticleSystem>();
 	}
@@ -15,7 +15,12 @@ public class ParticleEffect : MonoBehaviour {
 	{
 		if (myParticleSystem != null && myParticleSystem.particleCount == 0)
 		{
-			Destroy(this.gameObject);
+			Invoke("DestroyObject", 1.8f);
 		}
+	}
+
+	void DestroyObject()
+	{
+		Destroy(this.gameObject);
 	}
 }
