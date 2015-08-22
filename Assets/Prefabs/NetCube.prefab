@@ -44,6 +44,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441604}
+  - 114: {fileID: 11431562}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -367,6 +368,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navmeshAgent: {fileID: 19590678}
+--- !u!114 &11431562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf45d123e8b4a4de4a40b49b2c281fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: .100000001
 --- !u!114 &11494602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 11414348}
+  fall: {fileID: 11431562}
 --- !u!124 &12492798
 Behaviour:
   m_ObjectHideFlags: 1
@@ -437,6 +451,10 @@ Prefab:
       propertyPath: _goModel
       value: 
       objectReference: {fileID: 126186}
+    - target: {fileID: 0}
+      propertyPath: fall
+      value: 
+      objectReference: {fileID: 11431562}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182900}
