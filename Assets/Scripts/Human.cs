@@ -34,6 +34,25 @@ public class Human : MonoBehaviour {
 		{
 			_armRight.GetComponent<Renderer>().material.mainTexture = _armTextures[idx];
 		}
+
+		 //Randam Animation and StartFrame
+		Animation anim = this.gameObject.GetComponent<Animation>();
+		int rand = Random.Range(0, 2);
+		switch(rand)
+		{
+		case 0:
+			anim.Play("humanAnime00");
+			anim["humanAnime00"].time = Random.Range(0.0f, 1.0f);
+			break;
+		case 1:
+			anim.Play("humanAnime02");
+			anim["humanAnime02"].time = Random.Range(0.0f, 0.2f);
+			break;
+		default:
+			anim.Play("humanAnime02");
+			anim["humanAnime02"].time = Random.Range(0.0f, 0.2f);
+			break;
+		}
 	}
 	
 	// Update is called once per frame
