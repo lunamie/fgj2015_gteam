@@ -8,6 +8,8 @@ public class PlayerSync : NetworkBehaviour {
 	//[SerializeField] private Text debugText ;
 	public float _fRotRatio ;
 	public float _fPosRatio ;
+	public GameObject _goModel ;
+
 	
 	[SyncVar] private Quaternion syncPlayerRotation ;
 	[SyncVar] private Vector3 syncPlayerPosition ;
@@ -30,8 +32,8 @@ public class PlayerSync : NetworkBehaviour {
 	void FixedUpdate () {
 		TransmitRotations ();
 
-		transform.rotation = syncPlayerRotation ;
-		transform.localPosition = new Vector3( syncPlayerPosition.x, transform.localPosition.y, transform.localPosition.z ) ;
+		//_goModel.transform.lo = syncPlayerRotation ;
+		_goModel.transform.localPosition = new Vector3( syncPlayerPosition.x, _goModel.transform.localPosition.y, _goModel.transform.localPosition.z ) ;
 	}
 
 	void DEBUG_OUTPUT () {
@@ -55,7 +57,7 @@ public class PlayerSync : NetworkBehaviour {
 			MyAcceleration = Input.acceleration;
 
 			myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.x * _fRotRatio * (-1) ) ;
-			myPos = new Vector3( MyAcceleration.x * _fPosRatio, transform.localPosition.y, transform.localPosition.z ) ;
+			myPos = new Vector3( MyAcceleration.x * _fPosRatio, _goModel.transform.localPosition.y, _goModel.transform.localPosition.z ) ;
 
 			//debugText.text = "Rotate Y : " + MyAcceleration.y.ToString() ;
 
