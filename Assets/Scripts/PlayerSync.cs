@@ -6,11 +6,12 @@ using System.Collections;
 public class PlayerSync : NetworkBehaviour {
 
 	//[SerializeField] private Text debugText ;
-	public float _fRotRatio ;
-	public float _fPosRatio ;
+	[SerializeField] private float _fRotRatio ;
+	[SerializeField] private float _fPosRatio ;
+	[SerializeField] private float _fHeightRatio ;
+
 	public GameObject _goModel ;
 
-	
 	[SyncVar] private Quaternion syncPlayerRotation ;
 	[SyncVar] private Vector3 syncPlayerPosition ;
 
@@ -21,11 +22,11 @@ public class PlayerSync : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//GameObject go = GameObject.Find ("debugText") as GameObject;
+		GameObject go = GameObject.Find ("debugText") as GameObject;
 
-		//if (go) {
+		if (go) {
 			//debugText = go.GetComponent<Text> ();
-		//}
+		}
 	}
 	
 	// Update is called once per frame
@@ -33,7 +34,7 @@ public class PlayerSync : NetworkBehaviour {
 		TransmitRotations ();
 
 		//_goModel.transform.lo = syncPlayerRotation ;
-		_goModel.transform.localPosition = new Vector3( syncPlayerPosition.x, _goModel.transform.localPosition.y, _goModel.transform.localPosition.z ) ;
+		_goModel.transform.localPosition = new Vector3( syncPlayerPosition.x, _goModel.transform.localPosition.y + syncPlayerPosition.y, _goModel.transform.localPosition.z ) ;
 	}
 
 	void DEBUG_OUTPUT () {
@@ -41,11 +42,13 @@ public class PlayerSync : NetworkBehaviour {
 	}
 
 	[Command]
-	void CmdTransformToSever ( Vector3 i_vRot, Vector3 i_vPos ) {
+	void CmdTransformToSever ( Vector3 i_vRot, Vector3 i_vPos, Vector3 i_vAcc ) {
 		//Debug.Log ("CmdRotateToSever OK  Y = " + i_vRot.z);
 
 		syncPlayerRotation.eulerAngles = i_vRot ;
 		syncPlayerPosition = i_vPos;
+
+		Debug.Log ("X : " + i_vAcc.x + "  Y : " + i_vAcc.y + "  Z : " + i_vAcc.z);
 	}
 
 	[Client]
@@ -56,14 +59,25 @@ public class PlayerSync : NetworkBehaviour {
 			Quaternion gyroQt = Input.gyro.attitude;
 			MyAcceleration = Input.acceleration;
 
-			myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.x * _fRotRatio * (-1) ) ;
-			myPos = new Vector3( MyAcceleration.x * _fPosRatio, _goModel.transform.localPosition.y, _goModel.transform.localPosition.z ) ;
+			Vector3 vPos = new Vector3(0.0f, 0.0f, 0.0f) ;
+			Vector3 vRot = new Vector3(0.0f, 0.0f, MyAcceleration.x * _fRotRatio * (-1) ) ;
+			//myRot = new Vector3 (0.0f, 0.0f, MyAcceleration.x * _fRotRatio * (-1) ) ;
 
+			float fAccMag = MyAcceleration.magnitude ;
+			if( MyAcceleration.y <= -0.3f ) {//&& MyAcceleration.z > -0.8f && MyAcceleration.z < -1.2f ) {
+				vPos = new Vector3( MyAcceleration.x * _fPosRatio, 1.0f * _fHeightRatio, _goModel.transform.localPosition.z ) ;
+			}
+			else {
+				vPos = new Vector3( MyAcceleration.x * _fPosRatio, 0.0f, _goModel.transform.localPosition.z ) ;
+			}
 			//debugText.text = "Rotate Y : " + MyAcceleration.y.ToString() ;
 
 			DEBUG_OUTPUT() ;
 
-			CmdTransformToSever( myRot, myPos ) ;
+			CmdTransformToSever( vRot, vPos, MyAcceleration ) ;
+
+			myPos = vPos ;
+			myRot = vRot ;
 		}
 	}
 }

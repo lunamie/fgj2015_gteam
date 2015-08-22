@@ -29,6 +29,7 @@ GameObject:
   - 92: {fileID: 9296102}
   - 124: {fileID: 12492798}
   - 81: {fileID: 8179234}
+  - 114: {fileID: 11449840}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -352,8 +353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6ae7428367e4ce39fa65ae22e4787a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fRotRatio: 20
-  _fPosRatio: 20
+  _fRotRatio: 3
+  _fPosRatio: 3
+  _fHeightRatio: .100000001
   _goModel: {fileID: 126186}
   MyAcceleration: {x: 0, y: 0, z: 0}
 --- !u!114 &11414348
@@ -379,7 +381,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf45d123e8b4a4de4a40b49b2c281fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: .100000001
+  _speed: .300000012
+--- !u!114 &11449840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64398746d21274bb29aaca688fa4949c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 126186}
 --- !u!114 &11494602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,11 +451,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _fRotRatio
-      value: 20
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _fPosRatio
-      value: 20
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPlayerAuthority
@@ -455,6 +469,14 @@ Prefab:
       propertyPath: fall
       value: 
       objectReference: {fileID: 11431562}
+    - target: {fileID: 0}
+      propertyPath: _fHeightRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _speed
+      value: .300000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182900}
