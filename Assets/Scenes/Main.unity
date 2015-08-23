@@ -994,6 +994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ghost: {fileID: 182900, guid: 0b8c1f8fce843430182b0f12ba542a37, type: 2}
+  TimeText: {fileID: 1290059875}
+  TimeCount: 0
 --- !u!4 &426099380
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,7 +1007,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &434131541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2615,7 @@ GameObject:
   - 222: {fileID: 1290059876}
   - 114: {fileID: 1290059875}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2633,7 +2635,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -489, y: 355.600006}
+  m_AnchoredPosition: {x: -489, y: 285}
   m_SizeDelta: {x: 252, y: 61.8149986}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1290059875
@@ -2747,7 +2749,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -491, y: 355.690002}
+  m_AnchoredPosition: {x: -491, y: 285}
   m_SizeDelta: {x: 272, y: 62}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1318420329
