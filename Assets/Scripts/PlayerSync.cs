@@ -145,7 +145,7 @@ public class PlayerSync : NetworkBehaviour {
 			}
 
 
-			if( vAcceleration.z <= -9.8f ) {
+			if( vAcceleration.z <= -7.8f ) {
 				CmdJump ( true ) ;
 			}
 			else {
