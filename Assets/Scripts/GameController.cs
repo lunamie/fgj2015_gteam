@@ -13,13 +13,16 @@ public class GameController : MonoBehaviour {
 		netManage.StartServer ();
 	}
 
-	public void CreateGhosts(System.Action _callback) {
+	public void CreateGhosts() {
 		var cntKey = "KEY_COUNT";
 		var savecnt = PlayerPrefs.GetInt( cntKey, 0 );
-		for ( int i = savecnt-1; i > 0 && i > savecnt - 21; i-- ) {
-			var json = PlayerPrefs.GetString(i.ToString());
+		for ( int i = savecnt - 1; i > 0 && i > savecnt - 21; i-- ) {
+			var json = PlayerPrefs.GetString( i.ToString() );
 			var ghost = Instantiate( Ghost );
-			ghost.GetComponent<NetCube>().autoFall.PlayTimeLine( json ,_callback);
+			var component = ghost.GetComponent<NetCube>();
+			component.autoFall.PlayTimeLine( json, () => {
+				component.Move.enabled = false;
+			} );
 		}
 	}
 

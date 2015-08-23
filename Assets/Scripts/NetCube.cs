@@ -25,6 +25,11 @@ public class NetCube : MonoBehaviour {
 		}
 	}
 
+	public Move Move {
+		get {
+			return move;
+		}
+	}
 	void Start () {
 		var points = GameObject.Find( "MovePoints" );
 		for ( int i = 0; i < points.transform.childCount; i++ ) {
@@ -42,9 +47,7 @@ public class NetCube : MonoBehaviour {
 		}
 
 		if ( !isGhost ) {
-			gameController.CreateGhosts( () => {
-				move.enabled = false;
-			} );
+			gameController.CreateGhosts( );
 			fall.StartFall( () => {
 				Debug.Log( "おちちゃった…" );
 				move.enabled = false;
