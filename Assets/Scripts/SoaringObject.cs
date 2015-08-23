@@ -15,7 +15,8 @@ public class SoaringObject : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if(collider.gameObject.tag == "Player" && this.gameObject.activeSelf)
+		ParticleSystem ps = collider.gameObject.GetComponent<ParticleSystem>();
+		if(collider.gameObject.tag == "Player" && ps != null && ps.isPlaying)
 		{
 			//Hit!
 
@@ -26,7 +27,6 @@ public class SoaringObject : MonoBehaviour {
 			PlayerSync sync = collider.gameObject.transform.parent.GetComponent<PlayerSync>();
 			if(sync != null)
 			{
-				Debug.Log("CallJump");
 				sync.CmdSoar(true);
 			}
 		}
