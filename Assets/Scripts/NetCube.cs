@@ -31,13 +31,15 @@ public class NetCube : MonoBehaviour {
 		Vector3 vInitPos =  points.transform.GetChild (0).transform.position;
 
 		transform.position = new Vector3 (vInitPos.x, transform.position.y, vInitPos.z);
+		var gameController = GameObject.FindObjectOfType<GameController>();
 
 		if ( !isGhost ) {
+			gameController.CreateGhosts();
 			fall.StartFall( () => {
 				Debug.Log( "おちちゃった…" );
 				move.enabled = false;
-			GameObject.Find( "GameController" ).gameObject.SendMessage( "GameEnd" ) ;
-			Application.LoadLevel( "Title" ) ;
+				gameController.GameEnd();
+				Application.LoadLevel( "Title" ) ;
 			} );
 		}
 	}

@@ -11,10 +11,9 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		var netManage = GameObject.Find ("NetworkManager").gameObject.GetComponent<NetworkManager> ();
 		netManage.StartServer ();
-		CreateGhosts();
 	}
 
-	void CreateGhosts() {
+	public void CreateGhosts() {
 		var cntKey = "KEY_COUNT";
 		var savecnt = PlayerPrefs.GetInt( cntKey, 0 );
 		for ( int i = 0; i < savecnt && i < 20; i++ ) {
@@ -31,7 +30,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	void GameEnd () {
+	public void GameEnd () {
 		var netManage = GameObject.Find ("NetworkManager").gameObject.GetComponent<NetworkManager> ();
 		netManage.StopServer ();
 	}
