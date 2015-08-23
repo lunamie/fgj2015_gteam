@@ -416,6 +416,7 @@ MonoBehaviour:
   move: {fileID: 11414348}
   fall: {fileID: 11431562}
   isGhost: 0
+  modelRenderer: {fileID: 2340434}
 --- !u!124 &12492798
 Behaviour:
   m_ObjectHideFlags: 1

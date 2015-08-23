@@ -269,6 +269,7 @@ MonoBehaviour:
   move: {fileID: 11414348}
   fall: {fileID: 11431562}
   isGhost: 1
+  modelRenderer: {fileID: 2340434}
 --- !u!195 &19590678
 NavMeshAgent:
   m_ObjectHideFlags: 1

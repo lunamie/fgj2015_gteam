@@ -16,6 +16,9 @@ public class NetCube : MonoBehaviour {
 	[SerializeField]
 	bool isGhost;
 
+	[SerializeField]
+	Renderer modelRenderer;
+
 	public AutoFall autoFall {
 		get {
 			return fall;
@@ -32,9 +35,16 @@ public class NetCube : MonoBehaviour {
 
 		transform.position = new Vector3 (vInitPos.x, transform.position.y, vInitPos.z);
 		var gameController = GameObject.FindObjectOfType<GameController>();
+		if ( isGhost ) {
+			modelRenderer.material = new Material( modelRenderer.material );
+			modelRenderer.material.color = new Color( Random.Range( 0f, 1f ), Random.Range( 0f, 1f ), Random.Range( 0f, 1f ), 0.5f );
+
+		}
 
 		if ( !isGhost ) {
-			gameController.CreateGhosts();
+			gameController.CreateGhosts( () => {
+				move.enabled = false;
+			} );
 			fall.StartFall( () => {
 				Debug.Log( "おちちゃった…" );
 				move.enabled = false;
