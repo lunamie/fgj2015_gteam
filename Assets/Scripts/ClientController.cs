@@ -4,14 +4,18 @@ using System.Collections;
 
 public class ClientController : MonoBehaviour {
 
+	[SerializeField] private NetworkManager _netManage ;
+
 	// Use this for initialization
 	void Start () {
-		var netManage = GameObject.Find( "NetworkManager" ).gameObject.GetComponent<NetworkManager> ();
-		netManage.StartClient ();	
+		_netManage = GameObject.Find( "NetworkManager" ).gameObject.GetComponent<NetworkManager> ();
+		_netManage.StartClient ();	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate () {
+		if (!_netManage.isNetworkActive) {
+			Application.LoadLevel( "Title" ) ;
+		}
 	}
 }

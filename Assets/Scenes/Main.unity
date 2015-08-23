@@ -694,7 +694,7 @@ GameObject:
   - 4: {fileID: 426099380}
   - 114: {fileID: 426099378}
   m_Layer: 0
-  m_Name: NetworkController
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

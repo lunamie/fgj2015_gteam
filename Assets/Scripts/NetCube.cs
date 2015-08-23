@@ -26,6 +26,8 @@ public class NetCube : MonoBehaviour {
 		fall.StartFall( () => {
 			Debug.Log( "おちちゃった…" );
 			move.enabled = false;
+			GameObject.Find( "GameController" ).gameObject.SendMessage( "GameEnd" ) ;
+			Application.LoadLevel( "Title" ) ;
 		} );
 	}
 	

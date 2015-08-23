@@ -18,4 +18,9 @@ public class GameController : MonoBehaviour {
 			Application.LoadLevel( "Main" ) ;
 		}
 	}
+
+	void GameEnd () {
+		var netManage = GameObject.Find ("NetworkManager").gameObject.GetComponent<NetworkManager> ();
+		netManage.StopServer ();
+	}
 }
