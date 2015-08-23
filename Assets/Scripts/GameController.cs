@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour {
 	public void CreateGhosts() {
 		var cntKey = "KEY_COUNT";
 		var savecnt = PlayerPrefs.GetInt( cntKey, 0 );
-		for ( int i = 0; i < savecnt && i < 20; i++ ) {
+		for ( int i = savecnt-1; i > 0 && i > savecnt - 21; i-- ) {
 			var json = PlayerPrefs.GetString(i.ToString());
 			var ghost = Instantiate( Ghost );
 			ghost.GetComponent<NetCube>().autoFall.PlayTimeLine( json );

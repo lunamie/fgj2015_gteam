@@ -116,7 +116,7 @@ public class AutoFall : MonoBehaviour {
 			gravityAccele += Time.deltaTime * 0.3f ;
 
 			eventTime += Time.deltaTime;
-			if ( Mathf.Abs( gameObject.transform.localPosition.y - prevPosY ) > 0.5 ) {
+			if ( Mathf.Abs( gameObject.transform.localPosition.y - prevPosY ) > 1 ) {
 				prevPosY = gameObject.transform.localPosition.y;
 				timeLine.Add( new PlayData() {
 					time = System.Math.Round( eventTime, 3 ),
