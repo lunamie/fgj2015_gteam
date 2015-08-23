@@ -58,8 +58,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 419794}
   - 111: {fileID: 11162616}
-  - 65: {fileID: 6561570}
-  - 114: {fileID: 11471814}
+  - 135: {fileID: 13543636}
+  - 114: {fileID: 11472828}
   m_Layer: 0
   m_Name: balloon
   m_TagString: Untagged
@@ -75,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 190598}
   m_LocalRotation: {x: 2.18556941e-08, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459828}
   - {fileID: 441192}
@@ -180,18 +180,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188278}
   m_Mesh: {fileID: 4300002, guid: bcf63894e65e46f40be7aeb69ae0be10, type: 3}
---- !u!65 &6561570
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190598}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: 1.5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!111 &11162616
 Animation:
   m_ObjectHideFlags: 1
@@ -207,7 +195,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &11471814
+--- !u!114 &11472828
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -219,6 +207,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosion: {fileID: 100000, guid: fabdd45f98921b547b28c84c0818d2a4, type: 2}
+--- !u!135 &13543636
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .140000001
+  m_Center: {x: 0, y: .620000005, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

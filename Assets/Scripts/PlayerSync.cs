@@ -92,7 +92,7 @@ public class PlayerSync : NetworkBehaviour {
 	}
 
 	[Command]
-	void CmdJump ( bool isJumped ) {
+	public void CmdJump ( bool isJumped ) {
 		_animModel.SetBool( "isJump", isJumped ) ;
 	}
 	
