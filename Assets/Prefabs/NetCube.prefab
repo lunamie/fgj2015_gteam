@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 482846}
   - 33: {fileID: 3396970}
   - 23: {fileID: 2340434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 124: {fileID: 12492798}
   - 81: {fileID: 8179234}
   - 114: {fileID: 11449840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - 114: {fileID: 11431562}
   - 95: {fileID: 9565804}
   - 135: {fileID: 13512458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - 195: {fileID: 19590678}
   - 114: {fileID: 11406242}
   - 114: {fileID: 11407988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NetCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Airplane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf45d123e8b4a4de4a40b49b2c281fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLine: []
   _speed: .800000012
+  _fGravityAccele: 0
 --- !u!114 &11449840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 11414348}
   fall: {fileID: 11431562}
+  isGhost: 0
 --- !u!124 &12492798
 Behaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +517,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _fSoaringPower
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
