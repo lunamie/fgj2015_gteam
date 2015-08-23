@@ -8,7 +8,7 @@ public class TitleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-	#if UNITY_ANDROID
+	#if !UNITY_EDITOR && UNITY_ANDROID
 		_isServer = false ;
 	#else
 		_isServer = true ;

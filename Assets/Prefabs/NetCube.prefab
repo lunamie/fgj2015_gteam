@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c68a1f334e54481b24ae177bdbbb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchPointDistance: 4
+  switchPointDistance: 5
   navmeshAgent: {fileID: 19590678}
 --- !u!114 &11431562
 MonoBehaviour:
@@ -504,7 +504,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: switchPointDistance
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
