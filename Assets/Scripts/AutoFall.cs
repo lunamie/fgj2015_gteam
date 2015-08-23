@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using LitJson;
 
+[System.Serializable]
+public class PlayData {
+	public double time;
+	public int type;
+	public double value;
+}
+
 public class AutoFall : MonoBehaviour {
 
 	const int TYPE_MOVE = 1;
 	const int TYPE_END = 2;
-
-	[System.Serializable]
-	public class PlayData {
-		public double time;
-		public int type;
-		public double value;
-	}
 
 	[SerializeField]
 	List<PlayData> timeLine = new List<PlayData>();
