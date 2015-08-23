@@ -16,7 +16,7 @@ public class SoaringItem : MonoBehaviour {
 	void OnTriggerEnter ( Collider coll ) {
 		if (coll.gameObject.tag == "Player") {
 			PlayerSync ps = coll.gameObject.transform.parent.gameObject.GetComponent<PlayerSync>() ;
-			ps.CmdSoar( true ) ;
+			ps.Soaring() ;
 
 			Destroy( gameObject ) ;
 		}

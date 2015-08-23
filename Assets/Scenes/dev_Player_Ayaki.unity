@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NetworkPort: 7777
-  m_NetworkAddress: 192.168.6.44
+  m_NetworkAddress: 192.168.6.38
   m_DontDestroyOnLoad: 1
   m_RunInBackground: 1
   m_SendPeerInfo: 0
