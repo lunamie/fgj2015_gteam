@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
+
 
 public class GameController : MonoBehaviour {
 
@@ -7,6 +9,8 @@ public class GameController : MonoBehaviour {
 	GameObject Ghost;
 	// Use this for initialization
 	void Start () {
+		var netManage = GameObject.Find ("NetworkManager").gameObject.GetComponent<NetworkManager> ();
+		netManage.StartServer ();
 		CreateGhosts();
 	}
 
@@ -19,11 +23,16 @@ public class GameController : MonoBehaviour {
 			ghost.GetComponent<NetCube>().autoFall.PlayTimeLine( json );
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if( Input.GetKey( KeyCode.Escape ) ) {
 			Application.LoadLevel( "Main" ) ;
 		}
+	}
+
+	void GameEnd () {
+		var netManage = GameObject.Find ("NetworkManager").gameObject.GetComponent<NetworkManager> ();
+		netManage.StopServer ();
 	}
 }

@@ -13,7 +13,13 @@ public class Balloon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+//		if(Input.GetKeyDown(KeyCode.A) && _explosion != null)
+//		{
+//			GameObject explosion = Instantiate(_explosion); 
+//			Vector3 setPos = this.gameObject.transform.localPosition + this.gameObject.transform.parent.position;
+//			setPos.y += 0.8f;
+//			explosion.transform.position = setPos;
+//		}
 	}
 
 	void OnTriggerEnter(Collider collider)
@@ -25,10 +31,10 @@ public class Balloon : MonoBehaviour {
 			//Explosion
 			if(_explosion != null)
 			{
-				GameObject explosion = Instantiate(_explosion); 
+				GameObject explosion = (GameObject) Instantiate(_explosion, Vector3.zero,  Quaternion.identity); 
 				Vector3 setPos = this.gameObject.transform.localPosition + this.gameObject.transform.parent.position;
-				setPos.y += 2;
-				_explosion.transform.position = setPos;
+				setPos.y += 0.8f;
+				explosion.transform.position = setPos;
 			}
 
 			//Destroy This with Parent

@@ -23,7 +23,10 @@ public class AutoFall : MonoBehaviour {
 	[SerializeField]
 	float _speed = 0.1f;
 
+	[SerializeField]
+	float _fGravityAccele = 0.0f;
 	int playIndex;
+
 
 	/// <summary>
 	/// 落下速度
@@ -32,7 +35,14 @@ public class AutoFall : MonoBehaviour {
 		get { return _speed; }
 		set { _speed = value; }
 	}
-
+	
+	/// <summary>
+	/// 落下加速度
+	/// </summary>
+	public float gravityAccele {
+		get { return _fGravityAccele; }
+		set { _fGravityAccele = value; }
+	}
 	public void PlayTimeLine( string json, System.Action _callback = null) {
 
 		timeLine = LitJson.JsonMapper.ToObject<List<PlayData>>( json );
@@ -100,7 +110,11 @@ public class AutoFall : MonoBehaviour {
 		} );
 
 		while(gameObject.transform.localPosition.y > 0){
-			gameObject.transform.localPosition += Vector3.down * speed * Time.deltaTime;
+			gameObject.transform.localPosition += Vector3.down * (speed + gravityAccele) * Time.deltaTime;
+
+			//	: code by Ayaki on 8/23/10:53.
+			gravityAccele += Time.deltaTime * 0.3f ;
+
 			eventTime += Time.deltaTime;
 			if ( Mathf.Abs( gameObject.transform.localPosition.y - prevPosY ) > 0.5 ) {
 				prevPosY = gameObject.transform.localPosition.y;
