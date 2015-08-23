@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Title.unity
-  - enabled: 0
-    path: Assets/Scenes/dev_Player_Ayaki.unity
   - enabled: 1
+    path: Assets/Scenes/dev_Player_Ayaki.unity
+  - enabled: 0
     path: Assets/Scenes/Main.unity

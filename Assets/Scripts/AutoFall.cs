@@ -109,14 +109,14 @@ public class AutoFall : MonoBehaviour {
 			value = prevPosY,
 		} );
 
-		while ( gameObject.transform.localPosition.y > 0 ) {
-			gameObject.transform.localPosition += Vector3.down * ( speed + gravityAccele ) * Time.deltaTime;
+		while(gameObject.transform.localPosition.y > 0){
+			gameObject.transform.localPosition += Vector3.down * (speed + gravityAccele) * Time.deltaTime;
 
 			//	: code by Ayaki on 8/23/10:53.
-			gravityAccele += Time.deltaTime * 0.3f;
+			gravityAccele += Time.deltaTime * 0.125f ;
 
 			eventTime += Time.deltaTime;
-			if ( ( eventTime - timeLine[timeLine.Count - 1].time ) > 0.5 && Mathf.Abs( gameObject.transform.localPosition.y - prevPosY ) > 1 ) {
+			if ( Mathf.Abs( gameObject.transform.localPosition.y - prevPosY ) > 1 ) {
 				prevPosY = gameObject.transform.localPosition.y;
 				timeLine.Add( new PlayData() {
 					time = System.Math.Round( eventTime, 3 ),
