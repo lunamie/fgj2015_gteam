@@ -8,10 +8,10 @@ public class TitleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-	#if UNITY_EDITOR
-		_isServer = true ;
-	#else
+	#if UNITY_ANDROID
 		_isServer = false ;
+	#else
+		_isServer = true ;
 	#endif
 	}
 	
