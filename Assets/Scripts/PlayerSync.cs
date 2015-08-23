@@ -10,11 +10,14 @@ public class PlayerSync : NetworkBehaviour {
 	[SerializeField] private float _fPosRatio ;
 	[SerializeField] private float _fHeightRatio ;
 
+	[SerializeField] private float _fSoaringPower ;
+
 	[SerializeField] private GameObject _goModel ;
 	[SerializeField] private Animator _animModel ;
 
 	[SyncVar] private Quaternion syncPlayerRotation ;
 	[SyncVar] private Vector3 syncPlayerPosition ;
+	[SyncVar] private float syncPlayerSoaring ;
 
 	[SerializeField] Vector3 MyAcceleration ;
 
@@ -37,17 +40,41 @@ public class PlayerSync : NetworkBehaviour {
 		TransmitRotations ();
 
 		//_goModel.transform.lo = syncPlayerRotation ;
-		_goModel.transform.localPosition = new Vector3( syncPlayerPosition.x, _goModel.transform.localPosition.y + syncPlayerPosition.y, _goModel.transform.localPosition.z ) ;
+		_goModel.transform.localPosition = new Vector3( syncPlayerPosition.x, _goModel.transform.localPosition.y + syncPlayerPosition.y + syncPlayerSoaring, _goModel.transform.localPosition.z ) ;
 	}
 
 	void DEBUG_OUTPUT () {
 		Debug.Log ("Out");
 	}
 
+	void SoaringForItem () {
+		if (_animModel.GetBool ("isSoar")) {
+			syncPlayerSoaring = _fSoaringPower ;
+		}
+		else {
+			syncPlayerSoaring = 0.0f ;
+		}
+	}
+
 	[Command]
 	void CmdJump ( bool isJumped ) {
 		_animModel.SetBool( "isJump", isJumped ) ;
 	}
+	
+	[Command]
+	public void CmdSoar ( bool isSoar ) {
+		_animModel.SetBool( "isSoar", isSoar ) ;
+
+		//	: Provision.
+		Invoke ("CmdDisenabledSoar", 1.0f);
+	}
+
+	//DEBUG.
+	[Command]
+	public void CmdDisenabledSoar () {
+		_animModel.SetBool( "isSoar", false ) ;
+	}
+
 
 	[Command]
 	void CmdTransformToSever ( Vector3 i_vRot, Vector3 i_vPos, Vector3 i_vAcc ) {
@@ -88,6 +115,8 @@ public class PlayerSync : NetworkBehaviour {
 			}
 
 			//debugText.text = "Rotate Y : " + MyAcceleration.y.ToString() ;
+
+			SoaringForItem() ;
 
 			DEBUG_OUTPUT() ;
 
