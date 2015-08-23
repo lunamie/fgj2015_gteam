@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using System.Collections;
 
 
@@ -7,6 +8,13 @@ public class GameController : MonoBehaviour {
 
 	[SerializeField]
 	GameObject Ghost;
+
+	[SerializeField]
+	Text TimeText ;
+
+	[SerializeField]
+	float TimeCount ;
+
 	// Use this for initialization
 	void Start () {
 		var netManage = GameObject.Find ("NetworkManager").gameObject.GetComponent<NetworkManager> ();
@@ -28,6 +36,10 @@ public class GameController : MonoBehaviour {
 		if( Input.GetKey( KeyCode.Escape ) ) {
 			Application.LoadLevel( "Main" ) ;
 		}
+
+		// TimeCounting.
+		TimeCount += Time.deltaTime;
+		TimeText.text = Mathf.FloorToInt( TimeCount ) + " sec";
 	}
 
 	public void GameEnd () {
