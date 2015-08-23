@@ -3,9 +3,21 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
+	[SerializeField]
+	GameObject Ghost;
 	// Use this for initialization
 	void Start () {
-	
+		CreateGhosts();
+	}
+
+	void CreateGhosts() {
+		var cntKey = "KEY_COUNT";
+		var savecnt = PlayerPrefs.GetInt( cntKey, 0 );
+		for ( int i = 0; i < savecnt && i < 20; i++ ) {
+			var json = PlayerPrefs.GetString(i.ToString());
+			var ghost = Instantiate( Ghost );
+			ghost.GetComponent<NetCube>().autoFall.PlayTimeLine( json );
+		}
 	}
 	
 	// Update is called once per frame

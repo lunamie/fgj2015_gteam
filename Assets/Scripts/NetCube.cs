@@ -13,6 +13,15 @@ public class NetCube : MonoBehaviour {
 	[SerializeField]
 	AutoFall fall;
 
+	[SerializeField]
+	bool isGhost;
+
+	public AutoFall autoFall {
+		get {
+			return fall;
+		}
+	}
+
 	void Start () {
 		var points = GameObject.Find( "MovePoints" );
 		for ( int i = 0; i < points.transform.childCount; i++ ) {
@@ -23,10 +32,12 @@ public class NetCube : MonoBehaviour {
 
 		transform.position = new Vector3 (vInitPos.x, transform.position.y, vInitPos.z);
 
-		fall.StartFall( () => {
-			Debug.Log( "おちちゃった…" );
-			move.enabled = false;
-		} );
+		if ( !isGhost ) {
+			fall.StartFall( () => {
+				Debug.Log( "おちちゃった…" );
+				move.enabled = false;
+			} );
+		}
 	}
 	
 	// Update is called once per frame

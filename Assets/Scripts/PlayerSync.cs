@@ -41,7 +41,7 @@ public class PlayerSync : NetworkBehaviour {
 	}
 
 	void DEBUG_OUTPUT () {
-		Debug.Log ("Out");
+		//Debug.Log ("Out");
 	}
 
 	[Command]
@@ -56,7 +56,7 @@ public class PlayerSync : NetworkBehaviour {
 		syncPlayerRotation.eulerAngles = i_vRot ;
 		syncPlayerPosition = i_vPos;
 
-		Debug.Log ("X : " + i_vAcc.x + "  Y : " + i_vAcc.y + "  Z : " + i_vAcc.z);
+		//Debug.Log ("X : " + i_vAcc.x + "  Y : " + i_vAcc.y + "  Z : " + i_vAcc.z);
 
 	}
 	
